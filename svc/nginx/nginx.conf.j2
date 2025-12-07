@@ -81,8 +81,8 @@ http {
             sub_filter_once off;
         }
 
-        location /ext {
-            proxy_pass http://exts/;
+        location ~ ^/ext(/.*)?$ {
+            proxy_pass http://exts/ext$1$is_args$args;
         }
 
         location /ubo/ {
